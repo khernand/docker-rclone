@@ -3,7 +3,6 @@ MAINTAINER tynor88 <tynor@hotmail.com>
 
 # global environment settings
 ENV PLATFORM_ARCH="amd64"
-ARG RCLONE_VERSION="current"
 
 # s6 environment settings
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
@@ -30,8 +29,8 @@ RUN \
  tar xfz \
 	/tmp/s6-overlay.tar.gz -C / && \
  cd tmp && \
- wget -q https://downloads.rclone.org/v${RCLONE_VERSION}/rclone-v${RCLONE_VERSION}-linux-${PLATFORM_ARCH}.zip && \
- unzip /tmp/rclone-v${RCLONE_VERSION}-linux-${PLATFORM_ARCH}.zip && \
+ wget -q https://downloads.rclone.org/rclone-current-linux-${PLATFORM_ARCH}.zip && \
+ unzip /tmp/rclone-current-linux-${PLATFORM_ARCH}.zip && \
  mv /tmp/rclone-*-linux-${PLATFORM_ARCH}/rclone /usr/bin && \
  apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
 	shadow && \
